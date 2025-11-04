@@ -1,3 +1,4 @@
+import { profile } from "console";
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 
@@ -36,10 +37,22 @@ export const signup = async (req, res) => {
             password: hashPassword
         });
 
-        
+        if(newUser){
+            generateToken(newUser._id, res);
+            await newUser.save();
+
+            res.status(201).json({
+                _id: newUser._id,
+                fullName: newUser.fullName,
+                email: newUser.email,
+                profilePic: newUser.profilePic,
+            });
+        }else{
+            res.status(400).json({message: "Error creating user"});
+        }
 
     }catch(error){
-
+        res.status(500).json({message: "Server error"});
     }
 
     res.send("Signup controller");
