@@ -1,3 +1,6 @@
+import User from "../models/User.js";
+import bcrypt from "bcryptjs";
+
 export const signup = async (req, res) => {
     const {fullName, email, password} = req.body;
     try{
@@ -15,6 +18,13 @@ export const signup = async (req, res) => {
         if(!emailRegex.test(email)){
             return res.status(400).json(
                 {message: "Please provide a valid email address"}
+            );
+        }
+
+        const user = await User.findOne({email});
+        if(user){
+            return res.status(400).json(
+                {message: "User with this email already exists"}
             );
         }
 
