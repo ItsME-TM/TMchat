@@ -6,7 +6,7 @@ export const sendWelcomeEmail = async (email, name, cientURL) => {
         from: `${sender.name} <${sender.email}>`,
         to: email,
         subject: "Welcome to TMchat!",
-        html: createWelcomeEmailTemplate(name, cientURL),
+        html: createWelcomeEmailTemplate(name, "TMchat", cientURL),
     });
     if(error){
         console.error("Error sending welcome email: ", error);
