@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import {ENV} from "../lib/env.js";
 import dotenv from "dotenv";
 
 
@@ -6,8 +7,8 @@ dotenv.config();
 
 
 export const sender = {
-  email: process.env.EMAIL_FROM || "no-reply@example.com",
-  name: process.env.EMAIL_FROM_NAME || "TMchat",
+  email: ENV.EMAIL_FROM || "no-reply@example.com",
+  name: ENV.EMAIL_FROM_NAME || "TMchat",
 };
 
 let transporterPromise;
@@ -18,16 +19,16 @@ async function getTransporter() {
 
   transporterPromise = (async () => {
     const hasSmtpEnv =
-      process.env.SMTP_HOST || process.env.SMTP_USER || process.env.SMTP_PASS;
+      ENV.SMTP_HOST || ENV.SMTP_USER || ENV.SMTP_PASS;
 
     if (hasSmtpEnv) {
-      const host = process.env.SMTP_HOST || "smtp.gmail.com";
-      const port = Number(process.env.SMTP_PORT || 587);
+      const host = ENV.SMTP_HOST || "smtp.gmail.com";
+      const port = Number(ENV.SMTP_PORT || 587);
       const secure =
-        String(process.env.SMTP_SECURE || "false").toLowerCase() === "true" ||
+        String(ENV.SMTP_SECURE || "false").toLowerCase() === "true" ||
         port === 465;
-      const authUser = process.env.SMTP_USER;
-      const authPass = process.env.SMTP_PASS;
+      const authUser = ENV.SMTP_USER;
+      const authPass = ENV.SMTP_PASS;
 
       return nodemailer.createTransport({
         host,
@@ -41,7 +42,7 @@ async function getTransporter() {
     // Dev/test fallback: Ethereal (free, non-delivering test inbox with preview URL)
     const testAccount = await nodemailer.createTestAccount();
     // If sender email wasn't provided, use the Ethereal user as from-address
-    if (!process.env.EMAIL_FROM) {
+    if (!ENV.EMAIL_FROM) {
       sender.email = testAccount.user;
     }
     return nodemailer.createTransport({
