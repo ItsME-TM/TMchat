@@ -107,3 +107,7 @@ export const logout = async (_, res) => {
     message: "Logged out successfully"
   });
 };
+
+export const updateProfile = async (req, res) => {
+  
+}
