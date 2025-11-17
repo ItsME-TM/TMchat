@@ -41,8 +41,9 @@ export const sendMessage = async (req, res) => {
         const {text, image} = req.body;
         const {id: receiverId} = req.params;
         const senderId = req.user._id;
+        const trimmedText = text?.trim();
 
-        if(!text && !image){
+        if(!trimmedText && !image){
             return res.status(400).json({message: "Message text or image is required"});
         }
 
@@ -64,7 +65,7 @@ export const sendMessage = async (req, res) => {
         const newMessage = new Message({
             senderId,
             receiverId,
-            text,
+            trimmedText,
             image: imageUrl,
         });
 
