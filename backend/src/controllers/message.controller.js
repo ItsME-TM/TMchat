@@ -64,3 +64,28 @@ export const sendMessage = async (req, res) => {
         res.status(500).json({message: "Server error"});
     }
 }
+
+export const getChatPartners = async (req, res) => {
+    try{
+        const loggedInUserId = req.user._id;
+
+        //find all users who have chatted with the logged-in user
+        const messages = await Message.find({
+            $or: [{ senderId: loggedInUserId}, { receiverId: loggedInUserId }],
+        });
+        const chatPartnerIds = [
+            ...new Set(
+            messages.map((msg) => msg.senderId.toString() === loggedInUserId.toString() 
+            ? msg.receiverId.toString() : msg.senderId.toString())
+        ),];
+
+        const chatPartners = await User.find({
+            _id: {$in: chatPartnerIds}
+        }).select("-password");
+
+        res.status(200).json(chatPartners);
+    }catch(error){
+        console.error("Get chat partners error:", error);
+        res.status(500).json({message: "Server error"});
+    }
+}
