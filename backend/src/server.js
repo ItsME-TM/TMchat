@@ -9,11 +9,11 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 
 const app = express();
-app.use(cookieParser());
 app.use(cors({
   origin: ENV.CLIENT_URL,
   credentials: true
 }));
+app.use(cookieParser());
 
 // Resolve current file/dir for robust pathing regardless of cwd
 const __filename = fileURLToPath(import.meta.url);
