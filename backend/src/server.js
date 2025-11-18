@@ -6,9 +6,14 @@ import { fileURLToPath } from "url";
 import { connectDB } from "./lib/db.js";
 import { ENV } from "./lib/env.js";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 const app = express();
 app.use(cookieParser());
+app.use(cors({
+  origin: ENV.CLIENT_URL,
+  credentials: true
+}));
 
 // Resolve current file/dir for robust pathing regardless of cwd
 const __filename = fileURLToPath(import.meta.url);
