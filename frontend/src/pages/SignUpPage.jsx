@@ -18,7 +18,7 @@ function SignUpPage() {
   }
   return (
     <div className="w-full h-full flex items-center justify-center p-4 bg-slate-900">
-        <div className="relative w-full max-w-6xl md:h-[800px] lg:h-[550px] h-[600px] ">
+        <div className="relative w-full max-w-6xl md:h-[800px] lg:h-[565px] h-[600px] ">
           <BorderAnimatedContainer>
 
             {/* For small display one column and for large display two columns */}
