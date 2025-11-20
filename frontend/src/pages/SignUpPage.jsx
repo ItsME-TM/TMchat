@@ -18,7 +18,7 @@ function SignUpPage() {
   }
   return (
     <div className="w-full h-full flex items-center justify-center p-4 bg-slate-900">
-        <div className="relative w-full max-w-6xl md:h-[800px] lg:h-[550px] h-[600px] ">
+        <div className="relative w-full max-w-6xl md:h-[800px] lg:h-[565px] h-[600px] ">
           <BorderAnimatedContainer>
 
             {/* For small display one column and for large display two columns */}
@@ -31,7 +31,7 @@ function SignUpPage() {
 
                     {/* Icon and Heading */}
                     <MessageCircleIcon className="w-12 h-12 mx-auto text-slate-400 mb-3"/>
-                    <h2 className="text-xl font-bold text-slate-200">Create Account</h2>
+                    <h2 className="text-xl font-bold text-slate-200">Create A Account</h2>
                     <p className="">Sign up for a new account</p>
                   </div>
 
