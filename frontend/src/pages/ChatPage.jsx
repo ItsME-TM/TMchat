@@ -21,7 +21,7 @@ function ChatPage() {
           <ProfileHeader />
           <ActiveTabSwitch />
 
-          <div className="flex-1 overfolw-y-auto p-4 space-y2">
+          <div className="flex-1 overfolw-y-auto p-4 space-y-2">
             {activeTab === "chats" ? <ChatList /> : <ContactList />}
           </div>
         </div>
