@@ -31,7 +31,7 @@ function SignUpPage() {
 
                     {/* Icon and Heading */}
                     <MessageCircleIcon className="w-12 h-12 mx-auto text-slate-400 mb-3"/>
-                    <h2 className="text-xl font-bold text-slate-200">Create A Account</h2>
+                    <h2 className="text-xl font-bold text-slate-200">Create Account</h2>
                     <p className="">Sign up for a new account</p>
                   </div>
 
