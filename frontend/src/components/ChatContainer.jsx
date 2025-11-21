@@ -10,10 +10,11 @@ import MessagesLoadingSkeleton from './MessagesLoadingSkeleton';
 function ChatContainer() {
     const { selectedUser, getMessagesByUserId, messages, isMessagesLoading} = useChatStore();
     const { authUser} = useAuthStore();
-    console.log("length of messages: ", messages.length);
 
     useEffect(() => { 
-        getMessagesByUserId(selectedUser._id);
+        if(selectedUser?._id){
+            getMessagesByUserId(selectedUser._id);
+        };
     },[selectedUser, getMessagesByUserId]);
     
     return (

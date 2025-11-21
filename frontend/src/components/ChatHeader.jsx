@@ -4,7 +4,6 @@ import { XIcon } from 'lucide-react';
 
 function ChatHeader() {
     const { selectedUser, setSelectedUser } = useChatStore();
-    
     //When hit ESC key close the chat header
     useEffect(() => {
         const handleEscKey = (event) => {
@@ -15,7 +14,7 @@ function ChatHeader() {
         //cleanup
         return () => window.removeEventListener("keydown", handleEscKey);
     },[setSelectedUser]);
-    
+
     return (
         <div className="flex justify-between items-center bg-slate-800/50 border-b border-slate-700/50 max-h-[84px] px-6 flex-1">
             <div className="flex items-center space-x-3 my-3">
