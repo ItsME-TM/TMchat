@@ -8,7 +8,7 @@ import MessageInput from './MessageInput';
 import MessagesLoadingSkeleton from './MessagesLoadingSkeleton';
 
 function ChatContainer() {
-    const { selectedUser, getMessagesByUserId, messages, isMessagesLoading} = useChatStore();
+    const { selectedUser, getMessagesByUserId, messages, isMessagesLoading, subscribeToMessages, unsubscribeFromMessages } = useChatStore();
     const { authUser} = useAuthStore();
     const messageEndRef = useRef(null);
 
@@ -17,7 +17,13 @@ function ChatContainer() {
         if(selectedUser?._id){
             getMessagesByUserId(selectedUser._id);
         };
-    },[selectedUser, getMessagesByUserId]);
+        subscribeToMessages();
+
+        //cleanup on unmount or when selectedUser changes
+        return () => {
+            unsubscribeFromMessages();
+        }
+    },[selectedUser, getMessagesByUserId, subscribeToMessages, unsubscribeFromMessages]);
 
     //when messages change, scroll to bottom
     useEffect(() => {
