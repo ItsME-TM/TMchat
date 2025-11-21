@@ -42,8 +42,7 @@ function ChatContainer() {
                                             <p className="mt-1">{msg.text}</p>
                                         )}
                                         <p className="text-xs opacity-75 flex items-center gap-2">
-                                            <span>{new Date(msg.createdAt).toISOString().slice(5,10)}</span>
-                                            <span>{new Date(msg.createdAt).toISOString().slice(11,16)}</span>
+                                            {new Date(msg.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                         </p>
                                     </div>
                                 </div>
