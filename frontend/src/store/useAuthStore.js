@@ -30,7 +30,7 @@ export const useAuthStore = create((set) => ({
 
             toast.success("Signup successful! Welcome aboard.");
         }catch(error){
-            toast.error(error.response.data.message);
+            toast.error(error.response?.data?.message || "Signup failed. Please try again.");
         }finally{
             set({ isSigningUp: false});
         }
@@ -44,7 +44,7 @@ export const useAuthStore = create((set) => ({
 
             toast.success("Login successful! Welcome back.");
         }catch(error){
-            toast.error(error.response.data.message);
+            toast.error(error.response?.data?.message || "Login failed. Please try again.");
         }finally{
             set({ isLoggingIn: false});
         }
@@ -58,7 +58,7 @@ export const useAuthStore = create((set) => ({
 
             toast.success("Logout successful! See you again.");
         }catch(error){
-            toast.error(error.response.data.message);
+            toast.error(error.response?.data?.message || "Logout failed. Please try again.");
         }finally{
             set({ isLoggingOut: false});
         }
@@ -72,7 +72,7 @@ export const useAuthStore = create((set) => ({
 
             toast.success("Profile updated successfully!");
         }catch(error){
-            toast.error(error.response.data.message);
+            toast.error(error.response?.data?.message || "Profile update failed. Please try again.");
         }finally{
             set({ isUpdatingProfile: false});
         }
