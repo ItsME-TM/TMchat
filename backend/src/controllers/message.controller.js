@@ -18,7 +18,6 @@ export const getAllContacts = async (req, res) => {
 }
 
 export const getMessagesByUserId = async (req, res) => {
-    console.log("getMessagesByUserId called");
     try{
         const myId = req.user._id;
         const {id: userToChatId} = req.params;
@@ -65,7 +64,7 @@ export const sendMessage = async (req, res) => {
         const newMessage = new Message({
             senderId,
             receiverId,
-            trimmedText,
+            text: trimmedText,
             image: imageUrl,
         });
 
