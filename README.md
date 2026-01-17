@@ -4,7 +4,6 @@
 ![Node](https://img.shields.io/badge/node-20.x-green.svg)
 ![MERN](https://img.shields.io/badge/stack-MERN-blueviolet.svg)
 
-# [🔗 🌐LIVE DEMO](https://chat-with-me-ee1bacf70853.herokuapp.com)
 # [🔗 📁DOCUMENTATION](https://drive.google.com/drive/folders/1W7bIllz6eY3xX3O1AblKhml1X5Il_1fl?usp=sharing)
 
 **TMchat** is a modern, real-time messaging application built with the MERN stack (MongoDB, Express, React, Node.js). It features secure authentication, real-time chat capabilities using Socket.io, and a sleek, responsive UI powered by TailwindCSS and DaisyUI.
