@@ -1,6 +1,17 @@
 node_modules
+**/node_modules
 dist
+build
+coverage
+
+# Environment files should never be part of the Docker build context
 .env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+!**/.env.example
+
 .git
 .github
 backend/node_modules
